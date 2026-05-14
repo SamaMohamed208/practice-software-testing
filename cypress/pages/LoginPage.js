@@ -29,8 +29,8 @@ class LoginPage {
 
   verifySuccessfulLogin() {
 
-    cy.contains('Sign out')
-      .should('exist');
+    cy.url({ timeout: 10000 })
+      .should('include', '/account');
 
   }
 
