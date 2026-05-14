@@ -6,7 +6,9 @@ import LoginPage from '../../pages/LoginPage';
 const loginPage = new LoginPage();
 
 Given('user opens the website', () => {
+
   cy.visit('https://practicesoftwaretesting.com/');
+
 });
 
 When('user enters valid email and password', () => {
@@ -18,12 +20,18 @@ When('user enters valid email and password', () => {
   );
 
   loginPage.enterPassword('welcome01');
+
 });
 
 When('clicks login button', () => {
+
   loginPage.clickLoginButton();
+
 });
 
 Then('login should be successful', () => {
-  cy.contains('Sign out').should('exist');
+
+  cy.url({ timeout: 10000 })
+    .should('include', '/account');
+
 });
