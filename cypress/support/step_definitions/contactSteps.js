@@ -5,6 +5,16 @@ import ContactPage from '../../pages/ContactPage';
 
 const contactPage = new ContactPage();
 
+before(function () {
+
+  cy.fixture('user').then((data) => {
+
+    globalThis.data = data;
+
+  });
+
+});
+
 When('user clicks contact page', () => {
 
   contactPage.openContactPage();
@@ -13,7 +23,7 @@ When('user clicks contact page', () => {
 
 When('user fills contact form', () => {
 
-  contactPage.fillContactForm();
+  contactPage.fillContactForm(data);
 
 });
 

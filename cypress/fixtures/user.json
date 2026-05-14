@@ -1,4 +1,9 @@
 {
+  "websiteURL": "https://practicesoftwaretesting.com/",
   "email": "customer@practicesoftwaretesting.com",
-  "password": "welcome01"
+  "password": "welcome01",
+  "searchProduct": "Hammer",
+  "contactName": "Sama Mohamed",
+  "contactEmail": "sama@test.com",
+  "contactMessage": "This is automation testing message for Cypress contact form validation testing."
 }

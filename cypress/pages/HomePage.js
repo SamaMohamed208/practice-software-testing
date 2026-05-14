@@ -1,13 +1,23 @@
 class HomePage {
 
-  visit() {
-    cy.visit('https://practicesoftwaretesting.com/');
+  visitWebsite(data) {
+
+    cy.visit(data.websiteURL);
+
   }
 
-  search(product) {
+  searchProduct(data) {
+
     cy.get('[data-test="search-query"]')
       .clear()
-      .type(product + '{enter}');
+      .type(data.searchProduct + '{enter}');
+
+  }
+
+  openContactPage() {
+
+    cy.contains('Contact').click();
+
   }
 
 }

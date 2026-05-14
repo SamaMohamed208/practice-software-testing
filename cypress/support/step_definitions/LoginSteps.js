@@ -2,12 +2,24 @@ import { Given, When, Then }
 from "@badeball/cypress-cucumber-preprocessor";
 
 import LoginPage from '../../pages/LoginPage';
+import HomePage from '../../pages/HomePage';
 
 const loginPage = new LoginPage();
+const homePage = new HomePage();
+
+before(function () {
+
+  cy.fixture('user').then((data) => {
+
+    globalThis.data = data;
+
+  });
+
+});
 
 Given('user opens the website', () => {
 
-  cy.visit('https://practicesoftwaretesting.com/');
+  homePage.visitWebsite(data);
 
 });
 
@@ -15,11 +27,9 @@ When('user enters valid email and password', () => {
 
   loginPage.clickSignIn();
 
-  loginPage.enterEmail(
-    'customer@practicesoftwaretesting.com'
-  );
+  loginPage.enterEmail(data);
 
-  loginPage.enterPassword('welcome01');
+  loginPage.enterPassword(data);
 
 });
 
@@ -31,7 +41,6 @@ When('clicks login button', () => {
 
 Then('login should be successful', () => {
 
-  cy.url({ timeout: 10000 })
-    .should('include', '/account');
+  loginPage.verifySuccessfulLogin();
 
 });

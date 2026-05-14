@@ -13,10 +13,11 @@ When('user sorts products', () => {
 
 Then('sorted products should be displayed', () => {
 
-  cy.get('.card').should('exist');
+  cy.get('.card')
+    .first()
+    .should('be.visible');
 
-  cy.get('body').should('be.visible');
-
-  cy.get('body').should('exist');
+  cy.get('body')
+    .should('contain', '$');
 
 });

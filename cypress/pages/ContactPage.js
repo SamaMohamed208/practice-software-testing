@@ -2,31 +2,28 @@ class ContactPage {
 
   openContactPage() {
 
-    cy.contains('Contact')
-      .click();
+    cy.contains('Contact').click();
 
   }
 
- fillContactForm() {
+  fillContactForm(data) {
 
-  cy.get('#first_name')
-    .type('Sama');
+    cy.get('#first_name')
+      .type('Sama');
 
-  cy.get('#last_name')
-    .type('Mohamed');
+    cy.get('#last_name')
+      .type('Mohamed');
 
-  cy.get('#email')
-    .type('sama@test.com');
+    cy.get('#email')
+      .type(data.contactEmail);
 
-  cy.get('#subject')
-    .select('Customer service');
+    cy.get('#subject')
+      .select('Customer service');
 
-  cy.get('#message')
-    .type(
-      'This is automation testing project for Cypress and BDD cucumber testing.'
-    );
+    cy.get('#message')
+      .type(data.contactMessage);
 
-}
+  }
 
   submitForm() {
 
@@ -37,11 +34,10 @@ class ContactPage {
 
   verifySuccessMessage() {
 
-  cy.url().should('include', 'contact');
+    cy.contains('Thanks')
+      .should('be.visible');
 
-  cy.get('body').should('be.visible');
-
-}
+  }
 
 }
 

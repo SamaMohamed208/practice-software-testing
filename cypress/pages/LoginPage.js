@@ -1,19 +1,37 @@
 class LoginPage {
 
   clickSignIn() {
+
     cy.contains('Sign in').click();
+
   }
 
-  enterEmail(email) {
-    cy.get('#email').type(email);
+  enterEmail(data) {
+
+    cy.get('#email')
+      .type(data.email);
+
   }
 
-  enterPassword(password) {
-    cy.get('#password').type(password);
+  enterPassword(data) {
+
+    cy.get('#password')
+      .type(data.password);
+
   }
 
   clickLoginButton() {
-    cy.get('[data-test="login-submit"]').click();
+
+    cy.get('[data-test="login-submit"]')
+      .click();
+
+  }
+
+  verifySuccessfulLogin() {
+
+    cy.contains('Sign out')
+      .should('exist');
+
   }
 
 }

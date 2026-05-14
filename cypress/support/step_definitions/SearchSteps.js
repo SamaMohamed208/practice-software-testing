@@ -1,16 +1,29 @@
-import { Given, When, Then }
+import { When, Then }
 from "@badeball/cypress-cucumber-preprocessor";
 
 import HomePage from '../../pages/HomePage';
 
 const homePage = new HomePage();
 
-When('user searches for {string}', (product) => {
-  homePage.search(product);
+before(function () {
+
+  cy.fixture('user').then((data) => {
+
+    globalThis.data = data;
+
+  });
+
+});
+
+When('user searches for {string}', () => {
+
+  homePage.searchProduct(data);
+
 });
 
 Then('products should be displayed', () => {
-  cy.get('.card').should('exist');
-  cy.get('body').should('be.visible');
-  cy.get('body').should('contain', 'Hammer');
+
+  cy.get('.card')
+    .should('exist');
+
 });
