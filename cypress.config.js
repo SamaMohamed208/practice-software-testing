@@ -14,7 +14,7 @@ module.exports = defineConfig({
 
   e2e: {
 
-    specPattern: "cypress/e2e/**/*.{feature,cy.js}",
+   specPattern: "**/*.feature",
 
     async setupNodeEvents(on, config) {
 
